@@ -1,6 +1,6 @@
-#ifndef YYTOKENTYPE
-#define YYTOKENTYPE
-enum yytokentype{
+#ifndef ETOKENTYPE
+#define ETOKENTYPE
+enum ETokenType{
 	T_TYPE_INT=1,
 	T_TYPE_CHAR,
 	T_TYPE_STRING,
@@ -11,6 +11,7 @@ enum yytokentype{
 	T_RCUR,
 	T_SEMI,
 	T_ASSI,
+	T_COMMA,
 	T_ID,
 	T_INT,
 	T_CHAR,

@@ -5,9 +5,11 @@
 #include "tokenTypes.h"
 %}
 
+commentoneline "//"[^\r\n]*
 whitespace [ \t\n]
 integer [0-9]+
 id [a-zA-Z_][0-9a-zA-Z_]*
+charescape (\\t|\\n|\\\|\\')
 
 %%
 
@@ -23,8 +25,9 @@ id [a-zA-Z_][0-9a-zA-Z_]*
 "}"             { return T_RCUR; }
 ";"             { return T_SEMI; }
 "="				{ return T_ASSI; }
+","				{ return T_COMMA; }
 
-'.'	{
+'(.|{charescape})'	{
 	return T_CHAR;
 }
 

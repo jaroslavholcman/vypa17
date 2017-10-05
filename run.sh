@@ -10,9 +10,14 @@ function removeFileIfExists {
 	fi
 }
 
-removeFileIfExists $EXECUTABLE
-removeFileIfExists $SRC_FLEX
-rm -rf *.o
+function clean {
+	removeFileIfExists $EXECUTABLE
+	removeFileIfExists $SRC_FLEX
+	rm -rf *.o
+}
+
+clean
+
 echo "##COMPILE######################################################"
 flex -o $SRC_FLEX $RULES_FLEX
 gcc -c $SRC_FLEX
@@ -23,3 +28,5 @@ echo "###############################################################"
 if [ -f $EXECUTABLE ]; then
 	./$EXECUTABLE in/1.c
 fi
+
+clean
