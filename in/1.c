@@ -1,18 +1,17 @@
-int main(void) {
-	string str1, str2;
-	int p; char zero;
-
-	zero = 'c';
-	
-	str1 = "This is some text";
-	str2 = strcat(str1, " that can be a little longer.");
-	print(str1, '\n', str2, "\n");
-	
-	str1 = read_string();
-	while ((int)(get_at(str1, p)) != 0)
+int main(void) { // Program Main function
+	int a, res;
+	print("Enter an integer to compute its factorial:");
+	a = read_int();
+	if (a < 0) {
+		print("\nFactorial of a negative integer is undefined!\n"); }
+	else
 	{
-		p = p + 1;
-	}
-	print("\nThe length of \"", str1, "\", is ", p, " characters.\n");
-
-}
+		res = 1;
+		while (a > 0)
+		{
+			res = res * a;
+			a = a - 1;
+		} // endwhile
+		print("\nThe result is: ", res, "\n");
+	} // endif
+} // main

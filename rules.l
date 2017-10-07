@@ -6,7 +6,7 @@
 %}
 
 commentoneline "//"[^\r\n]*
-whitespace [ \t\n]
+whitespace [ \t\v\n\f]
 integer [0-9]+
 id [a-zA-Z_][0-9a-zA-Z_]*
 charescape (\\t|\\n|\\\|\\')
@@ -14,6 +14,7 @@ charescape (\\t|\\n|\\\|\\')
 %%
 
 \n                   { /*neccessary for yylineno working*/ }
+{commentoneline} {}
 
 "int"		{return T_TYPE_INT;}
 "char"		{return T_TYPE_CHAR;}
@@ -55,8 +56,13 @@ charescape (\\t|\\n|\\\|\\')
 "="				{ return T_ASSI; }
 ","				{ return T_COMMA; }
 
+\"(\\.|[^\\"])*\" 	{ 
+	//http://www.lysator.liu.se/c/ANSI-C-grammar-l.html
+	return T_STRING;
+}
+
 {integer}	{
-	return T_INT;
+	return T_INT; 
 }
 
 '(.|{charescape})'	{
