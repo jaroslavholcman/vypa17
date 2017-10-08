@@ -71,9 +71,5 @@ start: T_IF {
 
 %%
 void yyerror (char const *s) {
-   fprintf (stderr, "%s\n", s);
- }
-
-int pars(){
-	return yyparse();
+	fprintf (stderr, "%s\n", s);
 }

@@ -2,7 +2,7 @@
 %option yylineno
 
 %{
-#include "tokenTypes.h"
+#include "parser.h"
 %}
 
 commentoneline "//"[^\r\n]*
